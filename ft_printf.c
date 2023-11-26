@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/26 17:21:04 by echoubby          #+#    #+#             */
+/*   Updated: 2023/11/26 18:00:12 by echoubby         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
 
-int ft_putchar(int c)
+int	ft_putchar(int c)
 {
 	int	i;
 
@@ -18,22 +30,28 @@ int	ft_write(char spec, va_list ptr)
 
 	i = 0;
 	if (spec == 'c')
-		i = ft_putchar(va_arg(ptr,  int));
+		i = ft_putchar(va_arg(ptr, int));
 	else if (spec == 's')
-		i = ft_putstr(va_arg(ptr,char *));
+		i = ft_putstr(va_arg(ptr, char *));
 	else if (spec == 'd' || spec == 'i')
 		i = ft_int(ptr);
 	else if (spec == 'x')
-		i = ft_HEXlower(ptr);
+		i = ft_hexlower(ptr);
 	else if (spec == 'X')
-		i = ft_HEXupper(ptr);
+		i = ft_hexupper(ptr);
+	else if (spec == 'u')
+		i = ft_unsigned_int(ptr);
+	else if (spec == 'p')
+		i = ft_pointer(ptr);
+	else
+		i = write(1, &spec, 1);
 	return (i);
 }
 
 int	ft_printf(const char *kalma, ...)
 {
-	int	i;
 	va_list	ptr;
+	int		i;
 
 	i = 0;
 	va_start(ptr, kalma);

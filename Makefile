@@ -6,7 +6,7 @@
 #    By: echoubby <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 16:47:41 by echoubby          #+#    #+#              #
-#    Updated: 2023/11/26 16:57:54 by echoubby         ###   ########.fr        #
+#    Updated: 2023/11/26 17:16:14 by echoubby         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ $(NAME): $(object)
 	ar rsc $@ $^
 $(object): $(src)
 	$(CC) $(CFLAGS) $(src) -c
-clean: $(object)
+clean:
 	rm -f $(object)
 fclean: clean
 	rm -f $(NAME)
