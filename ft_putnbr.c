@@ -6,28 +6,29 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:37:54 by echoubby          #+#    #+#             */
-/*   Updated: 2023/11/26 15:20:32 by echoubby         ###   ########.fr       */
+/*   Updated: 2023/11/26 16:26:56 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putnbr(int n, int base)
+int	ft_putnbr(int n, char const *base)
 {
 	int	i;
-	char *sym;
+	int	base_len;
 
+	base_len = ft_strlen(base);
 	i = 0;
-	sym = "0123456789abcdef";
 	if (n < 0)
 	{
 		ft_putchar('-');
 		return (ft_putnbr(-n, base) + 1);
 	}
-	else if (n < base)
-		i = ft_putchar(sym[n]);
+	else if (n < base_len)
+		i = ft_putchar(base[n]);
 	else
 	{
-		i = ft_putnbr((n / base),base);
-		return (ft_putnbr((n % base),base) + i);
+		i += ft_putnbr((n / base_len),base);
+		i += ft_putnbr((n % base_len),base);
 	}
+	return (i);
 }

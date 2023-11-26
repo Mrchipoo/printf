@@ -22,9 +22,11 @@ int	ft_write(char spec, va_list ptr)
 	else if (spec == 's')
 		i = ft_putstr(va_arg(ptr,char *));
 	else if (spec == 'd' || spec == 'i')
-		i = ft_putnbr((long)(va_arg(ptr,int)),10);
+		i = ft_int(ptr);
 	else if (spec == 'x')
-		i = ft_putnbr((long)(va_arg(ptr,unsigned int)),16);
+		i = ft_HEXlower(ptr);
+	else if (spec == 'X')
+		i = ft_HEXupper(ptr);
 	return (i);
 }
 
@@ -45,14 +47,4 @@ int	ft_printf(const char *kalma, ...)
 	}
 	va_end(ptr);
 	return (i);
-}
-
-int	main(void)
-{
-	int count1,count2;
-	count1 = printf("im %x years old\n",19);
-	printf("printf = %d\n",count1);
-	count2 = ft_printf("im %x years old\n",19);
-	printf("mine = %d\n",count2);
-	return 0;
 }
