@@ -6,15 +6,15 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 13:37:54 by echoubby          #+#    #+#             */
-/*   Updated: 2023/11/26 17:41:58 by echoubby         ###   ########.fr       */
+/*   Updated: 2023/11/26 19:16:06 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 int	ft_putnbr(unsigned long long n, char const *base)
 {
-	int	i;
-	unsigned long long	base_len;
+	int						i;
+	unsigned long long		base_len;
 
 	base_len = ft_strlen(base);
 	i = 0;

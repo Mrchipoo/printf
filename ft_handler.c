@@ -6,7 +6,7 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:28:22 by echoubby          #+#    #+#             */
-/*   Updated: 2023/11/26 18:53:23 by echoubby         ###   ########.fr       */
+/*   Updated: 2023/11/26 19:13:22 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -33,8 +33,11 @@ int	ft_int(va_list ptr)
 
 	nbr = va_arg(ptr, int);
 	if (nbr < 0)
+	{
 		write(1, "-", 1);
-	return (ft_putnbr(-nbr, "0123456789") + 1);
+		return (ft_putnbr(-nbr, "0123456789") + 1);
+	}
+	return (ft_putnbr(nbr, "0123456789"));
 }
 
 int	ft_unsigned_int(va_list ptr)
