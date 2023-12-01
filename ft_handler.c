@@ -6,7 +6,7 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:28:22 by echoubby          #+#    #+#             */
-/*   Updated: 2023/11/26 19:13:22 by echoubby         ###   ########.fr       */
+/*   Updated: 2023/12/01 10:29:29 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -53,6 +53,8 @@ int	ft_pointer(va_list ptr)
 	void	*nbr;
 
 	nbr = va_arg(ptr, void *);
+	if (nbr == NULL)
+		return (write(1,"(nil)",5));
 	write(1, "0x", 2);
 	return (ft_putnbr((unsigned long long)nbr, "0123456789abcdef") + 2);
 }

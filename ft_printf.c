@@ -6,7 +6,7 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:21:04 by echoubby          #+#    #+#             */
-/*   Updated: 2023/11/26 18:53:11 by echoubby         ###   ########.fr       */
+/*   Updated: 2023/12/01 10:32:37 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_putchar(int c)
 	return (i);
 }
 
-int	ft_write(char spec, va_list ptr)
+int	ft_checker(char spec, va_list ptr)
 {
 	int	i;
 
@@ -54,13 +54,15 @@ int	ft_printf(const char *kalma, ...)
 	int		i;
 
 	i = 0;
+	if (kalma == NULL)
+		return (-1);
 	va_start(ptr, kalma);
 	while (*kalma)
 	{
 		if (*kalma == '%')
-			i += ft_write(*(++kalma), ptr);
+			i += ft_checker(*(++kalma), ptr);
 		else
-			i += write(1, *(&kalma), 1);
+			i += write(1, kalma, 1);
 		kalma++;
 	}
 	va_end(ptr);
